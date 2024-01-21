@@ -1,0 +1,56 @@
+public class Counting_Elements_Of_Linked_List {
+    static class Node{
+        int data ;
+        Node next ;
+        Node(int d ){
+            data = d ;
+            next = null ;
+        }
+    }
+    public Node head = null ;
+    public Node tail = null ;
+    public void add_Elements(int data) {
+        Node n = new Node(data);
+
+        if (head == null) {
+            head = n;
+            tail = head;
+        } else {
+            tail.next = n;
+            tail = n;
+
+        }
+    }
+        int count = 0 ;
+        public int count_Elements(){
+            Node current = head ;
+            if(current == null){
+                return 0;
+            }
+
+
+            while(current != null){
+
+                count++ ;
+                System.out.println(current.data);
+                current = current.next ;
+
+            }
+            return count ;
+        }
+
+
+
+    public static void main(String [] args){
+        Counting_Elements_Of_Linked_List list = new Counting_Elements_Of_Linked_List();
+        list.add_Elements(100);
+        list.add_Elements(120);
+        list.add_Elements(189);
+        list.add_Elements(900);
+        System.out.println("Elements of Linked List are ") ;
+       int m =  list.count_Elements();
+
+       System.out.println( "Number of elements of Linked List are " + m);
+
+    }
+}
