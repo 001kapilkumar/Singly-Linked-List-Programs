@@ -1,0 +1,65 @@
+import java.util.*;
+public class Display_Linked_List_In_Reverse_Order {
+    static class Node{
+        int data ;
+        Node next ;
+        Node(int d){
+            data = d ;
+            next = null ;
+        }
+    }
+
+    public Node head = null ;
+    public Node tail = null ;
+    public void add_Elements(int data){
+        Node newNode = new Node(data);
+
+        if(head == null){
+            head = newNode ;
+            tail = newNode;
+
+        }
+        else{
+            tail.next = newNode ;
+            tail = newNode ;
+
+        }
+
+
+    }
+    public void display(){
+        Node current = head ;
+        if(current == null){
+            System.out.println("Linked list is empty");
+        }
+        while(current != null){
+            System.out.println(current.data) ;
+
+            current = current.next   ;
+        }
+    }
+    public void reverseDisplay(Node current){
+        //Node current = head ;
+
+        if(head== null){
+            System.out.println("List is empty");
+        }
+        else{
+            if(current.next == null){
+                System.out.println(current.data);
+            return;
+            }
+            reverseDisplay(current.next);
+            System.out.println(current.data) ;
+        }
+    }
+    public static void main(String [] args){
+        Display_Linked_List_In_Reverse_Order list = new Display_Linked_List_In_Reverse_Order() ;
+        list.add_Elements(56);
+        list.add_Elements(90);
+        System.out.println("Elements in original order are") ;
+        list.display();
+        System.out.println("Elements in reverse order are ");
+        list.reverseDisplay(list.head);
+    }
+}
