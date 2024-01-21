@@ -1,0 +1,55 @@
+import java.util.*;
+public class Adding_Elements_To_Linked_List {
+   // Node head ;
+    static class Node{
+        int data ;
+        Node next ;
+        Node( int d ){
+            data = d ;
+            next = null ;
+        }
+    }
+   Node  head = null;
+    Node tail = null ;
+
+      void  add_Elements(int data){
+           Node n = new Node(data) ;
+           if(head == null){
+               head = n ;
+               tail = n ;
+           }
+           else{
+               tail.next = n ;
+               tail = n ;
+
+           }
+
+
+           }
+           public void display(){
+          Node n1 = head ;
+          if(n1 == null){
+              System.out.println("List is empty") ;
+          }
+          while(n1 != null){
+              System.out.println(n1.data);
+              n1 = n1.next ;
+          }
+
+    }
+    public static void main(String [] args){
+        Adding_Elements_To_Linked_List list = new Adding_Elements_To_Linked_List() ;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter how many nodes you want to add to list ");
+        int j = sc.nextInt() ;
+        for(int i = 1; i<=j ; i++) {
+            System.out.println("Enter " + i + " number");
+            int a = sc.nextInt();
+            list.add_Elements(a);
+
+        }
+        System.out.println("Nodes of Linked list be ") ;
+        list.display();
+
+    }
+}
