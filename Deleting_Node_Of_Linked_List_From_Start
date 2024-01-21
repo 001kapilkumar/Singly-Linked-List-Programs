@@ -1,0 +1,72 @@
+public class Deleting_Node_Of_Linked_List_From_Start {
+    static class Node{
+        int data ;
+        Node next ;
+        Node(int d){
+            data = d ;
+            next = null ;
+        }
+    }
+    public Node head = null ;
+    public Node tail = null ;
+    public void add_Elements(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode ;
+            tail = newNode ;
+
+        }
+        else{
+            tail.next = newNode;
+            tail = newNode ;
+        }
+
+    }
+
+    public void node_Deletion(){
+        if(head == null){
+            System.out.println("List is empty");
+            return ;
+        }
+        else{
+            if(head != tail){
+                head = head.next ;
+            }
+            else{
+                head = null ;
+                tail = null ;
+            }
+        }
+
+    }
+    public void elementDisplay(){
+        Node current = head ;
+        if(head == null){
+            System.out.println("List is empty");
+        }
+        while(current != null){
+            System.out.println(current.data);
+            current = current.next ;
+
+        }
+    }
+    public static void main(String [] args){
+        Deleting_Node_Of_Linked_List_From_Start list = new Deleting_Node_Of_Linked_List_From_Start() ;
+        list.add_Elements(10);
+        list.add_Elements(20);
+        list.add_Elements(30);
+        list.add_Elements(40);
+        list.add_Elements(50);
+        System.out.println("Original list be ") ;
+        list.elementDisplay() ;
+        int count = 1;
+        while(list.head != null){
+
+            list.node_Deletion();
+            System.out.println("Linked list element after" + count);
+            list.elementDisplay() ;
+            count++ ;
+        }
+
+    }
+}
