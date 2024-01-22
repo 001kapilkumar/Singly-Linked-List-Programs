@@ -1,0 +1,97 @@
+public class Linked_List_Node_Deletion_From_Middle {
+
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
+    public Node head = null;
+    public Node tail = null;
+    int length = 0;
+
+    public void add_Elements(int data) {
+    Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+        length++;
+
+    }
+
+
+    // System.out.println("m be ")
+
+    public void element_Deletion() {
+        //Node current = head ;
+        int mid = (length % 2 == 0) ? (length / 2) : ((length + 1) / 2);
+
+        if (head == null) {
+            System.out.println("List is empty");
+
+        } else {
+            if (head != tail) {
+                Node temp = head;
+          Node previous = null;
+                for (int i = 0; i < mid - 1; i++) {
+                    previous = temp;
+                    temp = temp.next;
+                }
+
+
+                if (previous != null) {
+                    previous.next = temp.next;
+                    temp = null;
+                } else {
+                    head = tail = temp.next;
+                    temp = null;
+                    // System.out.println("list is empty");
+
+                }
+            } else {
+                head = null;
+                tail = null;
+            }
+        }
+        length--;
+
+    }
+
+    public void element_Display() {
+    Node current = head;
+        if (head == null) {
+            System.out.println("Linked List is empty");
+            return;
+        }
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        Deleting_Node_Of_Linked_List_From_Start list = new Deleting_Node_Of_Linked_List_From_Start();
+        list.add_Elements(10);
+        list.add_Elements(20);
+        list.add_Elements(30);
+        list.add_Elements(40);
+        System.out.println("Original list be ");
+        list.element_Display();
+        while (list.head != null) {
+            list.element_Deletion();
+            System.out.println("Updated list be ");
+            list.element_Display();
+        }
+
+
+    }
+}
