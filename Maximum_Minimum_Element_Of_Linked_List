@@ -1,0 +1,56 @@
+public class Maximum_Minimum_Element_Of_Linked_List {
+    static class Node{
+        int data ;
+        Node next ;
+        Node(int d){
+            data = d ;
+            next = null;
+        }
+    }
+    public Node head = null ;
+    public Node tail = null ;
+    public void add_Element(int data){
+        Node newNode = new Node(data) ;
+        if(head == null){
+            head = newNode ;
+            tail = newNode ;
+        }
+        else{
+            tail.next = newNode ;
+            tail = newNode ;
+        }
+
+    }
+    public void Minimum_Maximum_Element(){
+        Node current = head ;
+        if(head == null){
+            System.out.println("Linked List is empty");
+        }
+        int max = head.data ;
+        int min = head.data ;
+        while(current != null){
+
+            int a = current.data ;
+            if(a>max){
+                max = a ;
+
+            }
+            else if(min>a){
+                min = a ;
+            }
+            current = current.next ;
+        }
+        System.out.println("Maximum Element of linked list be " + max) ;
+        System.out.println("Minimum Element of linked list be " + min) ;
+
+    }
+    public static void main(String [] args){
+        Maximum_Minimum_Element_Of_Linked_List list = new Maximum_Minimum_Element_Of_Linked_List() ;
+        list.add_Element(12);
+        list.add_Element(78);
+        list.add_Element(1);
+        list.add_Element(786);
+        list.Minimum_Maximum_Element();
+
+    }
+}
