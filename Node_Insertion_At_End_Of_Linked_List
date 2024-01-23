@@ -1,0 +1,65 @@
+public class Node_Insertion_At_End_Of_Linked_List {
+    static class Node{
+        int data ;
+        Node next ;
+        Node(int d ){
+            data = d ;
+            next = null ;
+        }
+    }
+    public Node head = null ;
+    public Node tail = null ;
+    public void add_Element(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode ;
+            tail = newNode ;
+
+        }
+        else{
+            tail.next = newNode ;
+            tail = newNode ;
+        }
+
+
+    }
+    public void add_element_at_End(int temp){
+        Node end_Element = new Node(temp);
+        tail.next = end_Element ;
+         tail = end_Element ;
+
+
+    }
+    public void element_Display(){
+        Node current = head ;
+        if(head== null){
+            System.out.println("Linked List is empty");
+        }
+        while(current != null){
+            System.out.println(current.data);
+            current = current.next ;
+        }
+    }
+    public static void main(String [] args){
+        Node_Insertion_At_End_Of_Linked_List list = new Node_Insertion_At_End_Of_Linked_List();
+        list.add_Element(1);
+        list.add_Element(2);
+        list.add_Element(3);
+        list.add_Element(4);
+        list.add_Element(5);
+        System.out.println("Original list be ") ;
+        list.element_Display();
+        list.add_element_at_End(6);
+        System.out.println("Linked List after addition at end ");
+        list.element_Display();
+        list.add_element_at_End(50);
+        System.out.println("Linked List after addition at end ");
+        list.element_Display();
+        list.add_element_at_End(100);
+        System.out.println("Linked List after addition at end ");
+        list.element_Display();
+
+
+
+    }
+}
