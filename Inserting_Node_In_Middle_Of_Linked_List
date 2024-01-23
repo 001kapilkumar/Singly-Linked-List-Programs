@@ -1,0 +1,71 @@
+public class Inserting_Node_In_Middle_Of_Linked_List {
+    static class Node{
+        int data ;
+        Node next ;
+        Node(int d ){
+            data = d ;
+            next = null ;
+        }
+    }
+    public Node head = null ;
+    public Node tail = null ;
+    int length = 0;
+    public void add_Element(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head= newNode ;
+            tail = newNode ;
+        }
+        else{
+            tail.next = newNode ;
+            tail = newNode ;
+
+        }
+        length++ ;
+
+    }
+     public void inserting_element_In_Middle(int temp){
+     //   Node insert = temp ;
+        Node current = head ;
+        int mid = (length % 2 == 0) ? (length/2) : ((length+1)/2) ;
+        for(int i = 0; i<mid-1 ; i++){
+            current = current.next ;
+        }
+        Node middleNode = new Node(temp);
+        Node temp1 = current.next ;
+        current.next = middleNode ;
+        middleNode.next  = temp1 ;
+
+
+       // System.out.println(current.data);
+     }
+     public void element_display(){
+        Node current = head ;
+        if(head == null){
+            System.out.println("Linked List be empty ");
+        }
+        while(current != null){
+            System.out.print(current.data + " ");
+            current = current.next ;
+        }
+     }
+     public static void main(String [] args){
+         Inserting_Node_In_Middle_Of_Linked_List list = new Inserting_Node_In_Middle_Of_Linked_List();
+         list.add_Element(1);
+         list.add_Element(2);
+         list.add_Element(3);
+         list.add_Element(4);
+         list.add_Element(5);
+         list.add_Element(6);
+         list.add_Element(7);
+         System.out.println("Original Linked list be ");
+         list.element_display();
+         list.inserting_element_In_Middle(78);
+         System.out.println();
+         System.out.println("Linked List after insertion at middle");
+         list.element_display();
+
+
+     }
+
+}
