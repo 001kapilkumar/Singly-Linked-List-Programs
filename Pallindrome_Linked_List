@@ -1,0 +1,93 @@
+public class Pallindrome_Linked_List {
+    static class Node{
+        int data ;
+        Node next ;
+        Node(int d){
+            data = d ;
+            next = null ;
+        }
+    }
+    int length = 0;
+    public Node head = null;
+    public Node tail = null;
+        public void add_Element(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode ;
+            tail = newNode ;
+
+        }
+        else{
+            tail.next = newNode ;
+            tail = newNode ;
+        }
+        length++ ;
+
+    }
+    public Node reverseList(Node temp){
+            Node current = temp ;
+            Node previous = null ;
+            Node next = null ;
+            while(current != null){
+                next = current.next ;
+                current.next = previous;
+                previous = current ;
+                current = next ;
+            }
+            return previous ;
+    }
+    public void pallindromeList(){
+
+                Node current = head ;
+                int mid = (length % 2 == 0) ? (length/2) : ((length+1)/2) ;
+                for(int i = 1 ; i<mid ; i++){
+                    current = current.next ;
+                }
+                boolean flag = true;
+                Node reverseHead = reverseList(current.next);
+                while(head != null && reverseHead != null){
+                    if(head.data != reverseHead.data){
+                        flag = false ;
+                        break ;
+                    }
+
+                    head = head.next ;
+                    reverseHead = reverseHead.next ;
+                }
+                if(flag ){
+                    System.out.println("Pallindrome Linked List");
+
+                }
+                else{
+                    System.out.println("Not pallindrome Linked List");
+                }
+
+            }
+
+
+    public void element_Display(){
+            Node current = head  ;
+            if(head == null){
+                System.out.println("Linked list is empty");
+            }
+            while(current != null){
+                System.out.println(current.data);
+                current = current.next ;
+
+            }
+
+    }
+    public static void main(String [] args){
+        Pallindrome_Linked_List list = new Pallindrome_Linked_List() ;
+        list.add_Element(1);
+        list.add_Element(2);
+        list.add_Element(3);
+        list.add_Element(2);
+        list.add_Element(1);
+        System.out.println("Original list be ");
+        list.element_Display();
+        list.pallindromeList();
+
+    }
+
+}
