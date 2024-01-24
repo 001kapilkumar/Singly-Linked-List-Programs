@@ -1,0 +1,81 @@
+public class Remove_Duplicate_Element_From_Linked_List {
+    static class Node{
+        int data ;
+        Node next ;
+        Node(int d){
+            data = d ;
+            next = null ;
+        }
+    }
+    public Node head = null ;
+    public Node tail = null ;
+    int length = 0 ;
+    public void add_Element(int data){
+        Node newNode = new Node (data);
+        if(head == null){
+            head = newNode ;
+            tail = newNode ;
+        }
+        else{
+            tail.next = newNode ;
+            tail = newNode ;
+        }
+        length++ ;
+    }
+        public void remove_duplicate_Element(){
+        Node current = head ;
+        if(head == null){
+            System.out.println("Linked List is empty");
+        }
+        else{
+            while(current != null){
+                Node index = current.next ;
+                Node previous = current ;
+                while(index != null){
+                    if(current.data == index.data){
+                        previous.next = index.next ;
+                    }
+                    else{
+                        previous = index ;
+                    }
+                   index = index.next ;
+                }
+              current = current.next ;
+            }
+        }
+        }
+    public void element_Display(){
+        Node current = head ;
+        if(head == null){
+            System.out.println("Linked List is empty");
+        }
+        while(current != null){
+            System.out.println(current.data);
+            current = current.next ;
+        }
+    }
+    public static void main(String [] args){
+        Remove_Duplicate_Element_From_Linked_List list = new Remove_Duplicate_Element_From_Linked_List() ;
+        list.add_Element(1);
+        list.add_Element(2);
+        list.add_Element(3);
+        list.add_Element(4);
+        list.add_Element(5);
+        list.add_Element(1);
+        list.add_Element(2);
+        list.add_Element(1);
+        list.add_Element(3);
+        list.add_Element(4);
+        list.add_Element(1);
+
+
+        System.out.println("Original Elements of Linked List") ;
+        list.element_Display();
+        System.out.println("Linked List after removing Duplicate elements") ;
+        list.remove_duplicate_Element();
+        list.element_Display() ;
+
+
+
+    }
+}
