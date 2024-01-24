@@ -1,0 +1,64 @@
+public class Search_Element_In_Singly_Linked_List {
+    static class Node{
+        int data ;
+        Node next ;
+        Node (int d ){
+            data = d ;
+            next = null ;
+        }
+    }
+    public Node head = null ;
+    public Node tail = null ;
+    public void add_Element(int data){
+
+        Node newNode = new Node(data) ;
+        Node current = head ;
+        if(head == null){
+            head = newNode ;
+            tail = newNode ;
+        }
+        else{
+            tail.next = newNode ;
+            tail = newNode ;
+        }
+    }
+    public void search_Element(int n){
+        Node current = head ;
+        int count = 1 ;
+        int present = 0;
+        while(current != null){
+            if(current.data == n) {
+                System.out.println("Element " + n +" present at position " + count);
+                present  = 1 ;
+            }
+            count++ ;
+            current = current.next ;
+        }
+        if(present == 0){
+            System.out.println("Element " + n +" does not present in Linked List ");
+        }
+
+    }
+    public void element_Display(){
+        Node current = head ;
+        if(head == null){
+            System.out.println("Linked list is empty");
+        }
+        while(current != null){
+            System.out.println(current.data);
+            current = current.next ;
+        }
+    }
+    public static void main(String [] args){
+        Search_Element_In_Singly_Linked_List list = new Search_Element_In_Singly_Linked_List();
+        list.add_Element(1);
+        list.add_Element(2);
+        list.add_Element(3);
+        list.add_Element(40);
+        System.out.println("Element Of Linked List be ");
+        list.element_Display();
+        list.search_Element(40);
+        list.search_Element(90);
+
+    }
+}
